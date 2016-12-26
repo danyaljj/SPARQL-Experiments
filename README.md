@@ -62,6 +62,9 @@ You can add comments in your code, by using the `#` prefix:
 	- `3`  is the same as `“3”^^xsd:integer`
 	- `4.2` is the same as `“4.2”^^xsd:decimal`
 
+Important note: SPARQL is case sensitive (because RDF is case sensitive). For example, DBpedia uses the convention that property names are start with a lower case letter (e.g. dbpedia-owl:country for "the country belonging to X is ...") and class names start with an upper case letter (e.g. dbpedia-owl:Country).
+ 
+
 ### Matching patterns 
 These patterns are used to select sets of triples from the RDF database 
 
@@ -118,7 +121,20 @@ WHERE
 }
 ```
 
-
 ### Knowing that "Saint Louis University" is a "University": 
+
+
+### City names and the countries they are in 
+
+```sparql 
+PREFIX dbo: <http://dbpedia.org/ontology/> 
+SELECT DISTINCT ?city ?country 
+WHERE { ?city rdf:type dbo:City ; 
+              rdfs:label ?label ; 
+              dbo:country ?country 
+}
+```
+(try [here](http://yasgui.org/short/BkhTcbkHg))
+
 
 
