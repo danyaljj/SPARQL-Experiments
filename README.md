@@ -77,7 +77,6 @@ WHERE {?subject ?predicate ?object}
 LIMIT 100
 ```
 
-
 ### `SORT`ing and `GROUP`ing
 
 ```sparql  
@@ -88,6 +87,15 @@ ORDER BY DESC(?frequency)
 LIMIT 10
 ```
 
+## Combining Results 
+ - Conjunction operator `A . B`:  Join together the results of solving `A` and `B` by matching the 
+ values of any variables in common.
+ - Left to join `A OPTIONAL { B }`:  Join together the results of solving `A` and `B` by matching the
+ values of any variables in common, if possible. Keep all solutions from A whether or
+ not there’s a matching solution in `B`. 
+ - Disjunction `{ A } UNION { B }`: Include both the results of solving A and the results of solving `B`.
+ - Subtraction pattern `A MINUS { B }`: Solve `A`. Solve `B`. Include only those results from solving `A` 
+ that are not compatible with any of the results from `B`.
 
 ## Examples:
 
