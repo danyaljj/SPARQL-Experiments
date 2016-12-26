@@ -116,7 +116,7 @@ WHERE
 
 ### Knowing that "Saint Louis University" is a "University": 
 
-WikiData has an entry for ["Saint Louis University"](https://www.wikidata.org/wiki/Q734774) and an entry for ["University"](https://www.wikidata.org/wiki/Q3918). Given these enties (i.e. the WikiData ids), one can ask if one is [`instanceOf`](https://www.wikidata.org/wiki/Property:P31) the other one. 
+WikiData has an entry for ["Saint Louis University"](https://www.wikidata.org/wiki/Q734774) and an entry for ["University"](https://www.wikidata.org/wiki/Q3918). Given these enties (i.e. the WikiData ids), one can ask if one is [`instanceOf`](https://www.wikidata.org/wiki/Property:P31) the other one. (See the side notes at the end of this document, on how to obtain the WikiData ids) 
 
 ```sparql
 ASK {
@@ -158,7 +158,30 @@ WHERE { ?city rdf:type dbo:City ;
 ```
 (try [here](http://yasgui.org/short/BkhTcbkHg))
 
-## Side notes: 
+
+### Who is Harry Potter? 
+
+Let's say you want to describe Harry Potter. 
+
+```sparql 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?type ?superType WHERE 
+{ 
+  # give me ?type of the resource
+  <http://dbpedia.org/resource/Harry_Potter_(character)> rdf:type ?type .
+
+  # give me ?superTypes of ?type
+  OPTIONAL {
+   ?type rdfs:subClassOf ?superType .
+  }
+}
+```
+(try [here](http://yasgui.org/short/Bkd9FM1Se))
+
+which would yield results like "human", "person", "fictional character", etc. 
+
+## Side notes
 - You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). 
 
 
