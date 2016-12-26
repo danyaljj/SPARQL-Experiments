@@ -30,7 +30,7 @@ and later in the code we do:
 ... foo:bar ... 
 ```
 
-Often Here are the list of [prefixes for DBPedia](http://dbpedia.org/sparql?nsdecl). Also here is [a similar list of WikiData](https://www.mediawiki.org/wiki/Wikibase/Indexing/RDF_Dump_Format#Prefixes_used).  
+Often Here are the list of [prefixes for DBPedia](http://dbpedia.org/sparql?nsdecl). Also here is [a similar list of WikiData](https://www.mediawiki.org/wiki/Wikibase/Indexing/RDF_Dump_Format#Prefixes_used).  There is [this website](http://prefix.cc) to look up important global prefix names. 
 
 
 ### Variables
@@ -53,6 +53,18 @@ You can add comments in your code, by using the `#` prefix:
  	- `true`  is the same as `“true”^^xsd:boolean`
 	- `3`  is the same as `“3”^^xsd:integer`
 	- `4.2` is the same as `“4.2”^^xsd:decimal`
+
+### Matching patterns 
+These patterns are used to select sets of triples from the RDF database 
+
+ - Match an exact RDF triple: `ex:myWidget ex:partNumber “XY24Z1” .`
+ - Match one variable: `?person foaf:name “Lee Feigenbaum” .`
+ - Match multiple variables: `conf:SemTech2009 ?property ?value .`
+
+### Highlevel view of the queries 
+
+![](sparql-architecture.png)
+(picture from [here](http://www.iro.umontreal.ca/~lapalme/ift6281/sparql-1_1-cheat-sheet.pdf))
 
 ### `SELECT` and `WHERE` operator 
 
