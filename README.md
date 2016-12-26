@@ -158,6 +158,9 @@ WHERE { ?city rdf:type dbo:City ;
 ```
 (try [here](http://yasgui.org/short/BkhTcbkHg))
 
+## Side notes: 
+- You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). 
+
 
 ## Further reading
  - A comprehensive [cheatsheet](http://www.iro.umontreal.ca/~lapalme/ift6281/sparql-1_1-cheat-sheet.pdf). 
