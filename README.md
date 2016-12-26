@@ -31,6 +31,8 @@ and later in the code we do:
 ... foo:bar ... 
 ```
 
+where `bar` is a concept/page/entity/etc defined on the target domain defined by `foo`. 
+
 Often Here are the list of [prefixes for DBPedia](http://dbpedia.org/sparql?nsdecl). Also here is [a similar list of WikiData](https://www.mediawiki.org/wiki/Wikibase/Indexing/RDF_Dump_Format#Prefixes_used).  There is [this website](http://prefix.cc) to look up important global prefix names. 
 
 
@@ -130,4 +132,7 @@ WHERE { ?city rdf:type dbo:City ;
 (try [here](http://yasgui.org/short/BkhTcbkHg))
 
 
-
+## Further reading
+ - A comprehensive [cheatsheet](http://www.iro.umontreal.ca/~lapalme/ift6281/sparql-1_1-cheat-sheet.pdf). 
+ - General [syntax guidelines](https://wiki.base22.com/display/btg/SPARQL+Query+Examples#SPARQLQueryExamples-Findallclasseswithagivenprefix). 
+ - A list of [WikiData exmaples](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/queries/examples). 
