@@ -12,10 +12,47 @@ There are many online tools to run your queries:
 
 So far [YASGUI](http://yasgui.org)'s been my favorite. 
 
-## Prefixes 
-The prefixes help shorten queries. In other words, instead of using full URLs, we define prefixes for them to make the call shorter. All prefix URLs that do not contain hostname are prefixed with the hostname of the generating wiki. Here are the list of [prefixes for DBPedia](http://dbpedia.org/sparql?nsdecl). Also here is [a similar list of WikiData](https://www.mediawiki.org/wiki/Wikibase/Indexing/RDF_Dump_Format#Prefixes_used).  
-
 ## Basic Notation of SPARQL
+
+### Prefixes 
+The prefixes help shorten queries. In other words, instead of using full URLs, we define prefixes for them to make the call shorter. All prefix URLs/URIs that do not contain hostname are prefixed with the hostname of the generating wiki. 
+
+Here is an exmple URI, if used directly in the script: 
+```sparql 
+<http://this.is.a/full/URI/written#out>
+```
+Instead we defined the following prefix
+```sparql 
+PREFIX foo: <http://this.is.a/URI/prefix#>
+```
+and later in the code we do: 
+```sparql 
+... foo:bar ... 
+```
+
+Often Here are the list of [prefixes for DBPedia](http://dbpedia.org/sparql?nsdecl). Also here is [a similar list of WikiData](https://www.mediawiki.org/wiki/Wikibase/Indexing/RDF_Dump_Format#Prefixes_used).  
+
+
+### Variables
+Variables are indicated by a "?" or "$" prefix. For example: 
+
+```sparql 
+?var1, ?anotherVar, ?and_one_more
+```
+
+### Comments 
+You can add comments in your code, by using the `#` prefix: 
+```sparql 
+# This is a comment, ye ye, yo yo, ye ye ... 
+```
+### Literals 
+ - Plain literals: `"a plain literal"`
+ - Plain literal with language tag:  `“bonjour”@fr`
+ - Typed literal: `"13"^^xsd:integer`
+ - Some of these typed literals have shortcuts; here are some examples: 
+ 	- `true`  is the same as `“true”^^xsd:boolean`
+	- `3`  is the same as `“3”^^xsd:integer`
+	- `4.2` is the same as `“4.2”^^xsd:decimal`
 
 ### `SELECT` and `WHERE` operator 
 
@@ -27,6 +64,7 @@ SELECT ?subject ?predicate ?object
 WHERE {?subject ?predicate ?object} 
 LIMIT 100
 ```
+
 
 ### `SORT`ing and `GROUP`ing
 
