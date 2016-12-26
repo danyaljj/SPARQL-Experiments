@@ -5,11 +5,19 @@ The following two points made me create this document:
 
 For most this I am using the [SPARQL](https://en.wikipedia.org/wiki/SPARQL) query language. 
 
-## Query tools
+## Query endpoints 
 There are many online tools to run your queries: 
  - DBPedia's internal SPARQL tool: http://dbpedia.org/sparql
  - WikiData's SAPQL tool: https://query.wikidata.org/
 
+
+World
+Factbook
+http://www4.wiwiss.fuberlin.de/factbook/snorql/
+Country statistics from the
+CIA World Factbook
+bio2rdf http://bio2rdf.org/sparql Bioinformatics data from
+around 40 public databases
 So far [YASGUI](http://yasgui.org)'s been my favorite. 
 
 ## Basic Notation of SPARQL
