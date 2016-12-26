@@ -72,8 +72,6 @@ These patterns are used to select sets of triples from the RDF database
 ![](sparql-architecture.png)
 (picture from [here](http://www.iro.umontreal.ca/~lapalme/ift6281/sparql-1_1-cheat-sheet.pdf))
 
-### `SELECT` and `WHERE` operator 
-
 Use `SELECT` defines what you want and `WHERE` defines your conditions, restrictions, and filters. 
 For example: 
 
@@ -83,7 +81,7 @@ WHERE {?subject ?predicate ?object}
 LIMIT 100
 ```
 
-### `SORT`ing and `GROUP`ing
+The `SORT` operator can be used to sort the results. The `GROUP` keyword can be used to group/cluster the results. 
 
 ```sparql  
 SELECT ?predicate (COUNT(*)AS ?frequency)
@@ -93,7 +91,7 @@ ORDER BY DESC(?frequency)
 LIMIT 10
 ```
 
-## Combining Results 
+### Combining Results 
  - Conjunction operator `A . B`:  Join together the results of solving `A` and `B` by matching the 
  values of any variables in common.
  - Left to join `A OPTIONAL { B }`:  Join together the results of solving `A` and `B` by matching the
@@ -125,6 +123,28 @@ ASK {
     wd:Q734774 wdt:P31* wd:Q3918
 }
 ```
+(try [here](http://tinyurl.com/jgngf68))
+
+We can modify this to query everything that are `instanceOf` of "University" (i.e. list of universities). 
+```sparql 
+SELECT ?thing 
+WHERE {
+    ?thing wdt:P31* wd:Q3918
+}
+```
+(try [here](http://tinyurl.com/zn3ghl5))
+
+Or vice, get the super-types of "Saint Louis University": 
+
+```sparql 
+SELECT ?thing 
+WHERE {
+    wd:Q734774 wdt:P31* ?thing
+}
+```
+(try [here](http://tinyurl.com/zu5lewf))
+
+which are "University", "Building", "private not-for-profit educational institution". 
 
 ### City names and the countries they are in 
 
