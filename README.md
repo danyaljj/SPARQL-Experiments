@@ -7,18 +7,11 @@ For most this I am using the [SPARQL](https://en.wikipedia.org/wiki/SPARQL) quer
 
 ## Query endpoints 
 There are many online tools to run your queries: 
- - DBPedia's internal SPARQL tool: http://dbpedia.org/sparql
- - WikiData's SAPQL tool: https://query.wikidata.org/
+ - DBPedia's internal SPARQL endpoint: http://dbpedia.org/sparql
+ - WikiData's SPARQL endpoint: https://query.wikidata.org/
+ - Bio2RDF's SPARQL endpoint: http://bio2rdf.org/sparql 
 
-
-World
-Factbook
-http://www4.wiwiss.fuberlin.de/factbook/snorql/
-Country statistics from the
-CIA World Factbook
-bio2rdf http://bio2rdf.org/sparql Bioinformatics data from
-around 40 public databases
-So far [YASGUI](http://yasgui.org)'s been my favorite. 
+So far [YASGUI](http://yasgui.org)'s been my favorite, generic SPARQL editor, which can be used to query from a desired endpoint. 
 
 ## Basic Notation of SPARQL
 
