@@ -118,6 +118,13 @@ WHERE
 
 ### Knowing that "Saint Louis University" is a "University": 
 
+WikiData has an entry for ["Saint Louis University"](https://www.wikidata.org/wiki/Q734774) and an entry for ["University"](https://www.wikidata.org/wiki/Q3918). Given these enties (i.e. the WikiData ids), one can ask if one is [`instanceOf`](https://www.wikidata.org/wiki/Property:P31) the other one. 
+
+```sparql
+ASK {
+    wd:Q734774 wdt:P31* wd:Q3918
+}
+```
 
 ### City names and the countries they are in 
 
