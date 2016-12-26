@@ -181,6 +181,18 @@ SELECT ?type ?superType WHERE
 
 which would yield results like "human", "person", "fictional character", etc. 
 
+### Find graduates of Harward that are working at UIUC 
+Similar to the previous exmples, we find the ids for properties "employer" and "educated" and ids for entities "UIUC" and "Harvard", and use the conjunction operator ".": 
+
+```sparql 
+SELECT ?person 
+
+WHERE { 
+	?person wdt:P69 wd:Q13371. 
+  	?person wdt:P108 wd:Q457281
+}
+```
+
 ## Side notes
 - You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). 
 
