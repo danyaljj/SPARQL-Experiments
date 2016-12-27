@@ -310,6 +310,8 @@ which would result in 10806 representatives without ethnicity label.
 
 ### Finding distance between two nodes 
 
+Essentially finding the shortest common ancestor of A and B (idea from [here](http://stackoverflow.com/questions/19680440/finding-common-superclass-and-length-of-path-in-class-hierarchies/19681697#19681697))
+
 DBPedia
 
 ```sparql
