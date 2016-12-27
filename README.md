@@ -227,10 +227,15 @@ WHERE {
 ![](harvardGraduates.png)
 
 As you can see, most the Hardvard graduates are from east coast, USA. While west of China or central Africal almost have no representatives. 
-Repeating the same thing for UIUC graduates would show that most UIUC gradutes are coming from MidWest, USA, and mostly from Chicago suburbs:  
+Repeating [the same thing for UIUC graduates](http://tinyurl.com/hshxhpv) would show that most UIUC gradutes are coming from MidWest, USA, and mostly from Chicago suburbs:  
 
 ![](uiucGraduates.png)
 
+## Visualizing timeline 
+The SPARQL editor of WikiData also has ability to visualize data as timeline.
+Here I am visualizing the US presidents according to their date of birth. (try [here](http://tinyurl.com/zwtqv4r))
+
+![presidentDOBs.png]()
 
 ## Side notes
 - You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). 
