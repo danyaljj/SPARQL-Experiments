@@ -247,6 +247,7 @@ WHERE {
     }
 } 
 ```
+(try [here](http://tinyurl.com/j6cvlb3))
 
 ![](afroam-rep-birthplace.png)
 
@@ -255,6 +256,41 @@ The SPARQL editor of WikiData also has ability to visualize data as timeline.
 Here I am visualizing the US presidents according to their date of birth. (try [here](http://tinyurl.com/zwtqv4r))
 
 ![](presidentDOBs.png)
+
+### Distribution of members of house of representatives based on their ethnicity 
+
+```sparql
+SELECT ?ethLabel (COUNT(*) as  ?count)
+
+WHERE { 
+    ?person wdt:P39 wd:Q13218630 . 
+    ?person wdt:P172 ?eth . 
+  	
+    SERVICE wikibase:label {
+        bd:serviceParam wikibase:language "en" .
+    }
+} GROUP BY ?ethLabel
+```
+
+![](houseEthnicity.png)
+
+This is slightly misleading, since as we all know the majority is not African-Americans, but rather among the ones that have "ethnicity" label. In order to add an extra category for the ones that do no have an explicit ethnicity, we can use the `OPTIONAL` keyword to define it as optional.
+
+```sparql
+SELECT ?ethLabel (COUNT(*) as  ?count)
+
+WHERE { 
+    ?person wdt:P39 wd:Q13218630 . 
+    OPTIONAL { ?person wdt:P172 ?eth }. 
+  	
+    SERVICE wikibase:label {
+        bd:serviceParam wikibase:language "en" .
+    }
+} GROUP BY ?ethLabel
+```
+
+which would result in 10806 representatives without ethnicity label. 
+
 
 ## Side notes
 - You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). 
