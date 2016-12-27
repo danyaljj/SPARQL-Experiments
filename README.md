@@ -308,6 +308,58 @@ WHERE {
 which would result in 10806 representatives without ethnicity label. 
 
 
+### Finding distance between two nodes 
+
+DBPedia
+
+```sparql
+select ?a ?b ?super (?aLength + ?bLength as ?length)
+{
+  values (?a ?b) { (dbo:Person dbo:SportsTeam) }
+
+  { select ?a ?super (count(?mid) as ?aLength) { 
+      ?a rdfs:subClassOf* ?mid .
+      ?mid rdfs:subClassOf+ ?super .
+    }
+    group by ?a ?super
+  }
+  { select ?b ?super (count(?mid) as ?bLength) { 
+      ?b rdfs:subClassOf* ?mid .
+      ?mid rdfs:subClassOf+ ?super .
+    }
+    group by ?b ?super
+  }
+}
+order by ?length
+limit 1
+```
+(try [here](http://yasgui.org/short/HJWAUDgBl))
+
+
+```sparql
+select ?a ?b ?super (?aLength + ?bLength as ?length)
+{
+  values (?a ?b) { (wd:Q5 wd:Q349) }
+  { 
+    select ?a ?super (count(?mid) as ?aLength) { 
+      ?a wdt:P279* ?mid .
+      ?mid wdt:P279+ ?super .
+    }
+    group by ?a ?super
+  }
+  { 
+    select ?b ?super (count(?mid) as ?bLength) { 
+      ?b wdt:P279* ?mid .
+      ?mid wdt:P279+ ?super .
+    }
+    group by ?b ?super
+  }
+}
+order by ?length
+limit 1
+```
+(try [here](http://tinyurl.com/gnq8ts5))
+
 ## Side notes
 - You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). 
 
