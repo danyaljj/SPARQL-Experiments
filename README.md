@@ -233,7 +233,7 @@ Repeating [the same thing for UIUC graduates](http://tinyurl.com/hshxhpv) would 
 
 ### Birth place of African-American house representatives during history 
 
-```
+```sparql 
 SELECT ?personLabel ?coordinates
 
 WHERE { 
