@@ -227,6 +227,10 @@ WHERE {
 ![](harvardGraduates.png)
 
 As you can see, most the Hardvard graduates are from east coast, USA. While west of China or central Africal almost have no representatives. 
+Repeating the same thing for UIUC graduates would show that most UIUC gradutes are coming from MidWest, USA, and mostly from Chicago suburbs:  
+
+![](uiucGraduates.png)
+
 
 ## Side notes
 - You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). 
