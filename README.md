@@ -102,6 +102,22 @@ LIMIT 10
  that are not compatible with any of the results from `B`.
 
 ## Examples:
+### Getting all the people's names 
+To get all the people with DBPedia: 
+```sparql 
+select * { ?person a dbo:Person }
+limit 100
+```
+(try [here](http://yasgui.org/short/SkWK0IlHl))
+
+
+And getting people via WikiData: 
+```sparql 
+SELECT ?person WHERE { ?person wdt:P31 wd:Q5 }
+limit 100
+```
+(try [here](http://tinyurl.com/hzkj5ny))
+
 
 ### Getting all the Named-Entities that are "cats" 
 
@@ -109,8 +125,8 @@ LIMIT 10
 SELECT ?item ?itemLabel
 WHERE
 {
-	?item wdt:P31 wd:Q146 .
-	SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+    ?item wdt:P31 wd:Q146 .
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
 }
 ```
 
