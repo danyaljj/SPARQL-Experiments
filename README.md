@@ -313,50 +313,53 @@ which would result in 10806 representatives without ethnicity label.
 DBPedia
 
 ```sparql
-select ?a ?b ?super (?aLength + ?bLength as ?length)
+SELECT ?a ?b ?super (?aLength + ?bLength as ?length)
 {
   values (?a ?b) { (dbo:Person dbo:SportsTeam) }
-
-  { select ?a ?super (count(?mid) as ?aLength) { 
+  { 
+    SELECT ?a ?super (COUNT(?mid) as ?aLength) { 
       ?a rdfs:subClassOf* ?mid .
       ?mid rdfs:subClassOf+ ?super .
     }
-    group by ?a ?super
+    GROUP BY ?a ?super
   }
-  { select ?b ?super (count(?mid) as ?bLength) { 
+  { 
+    SELECT ?b ?super (COUNT(?mid) as ?bLength) { 
       ?b rdfs:subClassOf* ?mid .
       ?mid rdfs:subClassOf+ ?super .
     }
-    group by ?b ?super
+    GROUP BY ?b ?super
   }
 }
-order by ?length
-limit 1
+ORDER BY ?length
+LIMIT 1
 ```
 (try [here](http://yasgui.org/short/HJWAUDgBl))
 
 
+WikiData 
+
 ```sparql
-select ?a ?b ?super (?aLength + ?bLength as ?length)
+SELECT ?a ?b ?super (?aLength + ?bLength as ?length)
 {
   values (?a ?b) { (wd:Q5 wd:Q349) }
   { 
-    select ?a ?super (count(?mid) as ?aLength) { 
+    SELECT ?a ?super (COUNT(?mid) as ?aLength) { 
       ?a wdt:P279* ?mid .
       ?mid wdt:P279+ ?super .
     }
-    group by ?a ?super
+    GROUP BY ?a ?super
   }
   { 
-    select ?b ?super (count(?mid) as ?bLength) { 
+    SELECT ?b ?super (COUNT(?mid) as ?bLength) { 
       ?b wdt:P279* ?mid .
       ?mid wdt:P279+ ?super .
     }
-    group by ?b ?super
+    GROUP BY ?b ?super
   }
 }
-order by ?length
-limit 1
+ORDER BY ?length
+LIMIT 1
 ```
 (try [here](http://tinyurl.com/gnq8ts5))
 
