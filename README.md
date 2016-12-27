@@ -207,7 +207,26 @@ WHERE {
 ```
 (try [here](http://tinyurl.com/jmwseyj))
 
+### Visualizing results on a map 
+Let's continue the example of Harvard graduates by extracting their birthplace and its coordinates. Next we can use the editoro to visualize the results of the coordinates on a Map.  
 
+```sparql
+SELECT ?person  ?personLabel ?birthPlaceLabel ?coordinates
+
+WHERE { 
+	?person wdt:P69 wd:Q13371. 
+  	?person wdt:P19 ?birthPlace. 
+    ?birthPlace wdt:P625 ?coordinates .
+    SERVICE wikibase:label {
+		bd:serviceParam wikibase:language "en" .
+	}
+}
+```
+(run [here](http://tinyurl.com/z8434u4))
+
+![](harvardGraduates.png)
+
+As you can see, most the Hardvard graduates are from east coast, USA. While west of China or central Africal almost have no representatives. 
 
 ## Side notes
 - You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). 
