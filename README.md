@@ -231,7 +231,26 @@ Repeating [the same thing for UIUC graduates](http://tinyurl.com/hshxhpv) would 
 
 ![](uiucGraduates.png)
 
-## Visualizing timeline 
+### Birth place of African-American house representatives during history 
+
+```
+SELECT ?personLabel ?coordinates
+
+WHERE { 
+    ?person wdt:P39 wd:Q13218630 . 
+    ?person wdt:P172 wd:Q49085 . 
+    ?person wdt:P19 ?birthPlace. 
+    ?birthPlace wdt:P625 ?coordinates .
+  	
+    SERVICE wikibase:label {
+        bd:serviceParam wikibase:language "en" .
+    }
+} 
+```
+
+![](afroam-rep-birthplace.png)
+
+### Visualizing timeline 
 The SPARQL editor of WikiData also has ability to visualize data as timeline.
 Here I am visualizing the US presidents according to their date of birth. (try [here](http://tinyurl.com/zwtqv4r))
 
