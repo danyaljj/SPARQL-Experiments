@@ -235,7 +235,7 @@ Repeating [the same thing for UIUC graduates](http://tinyurl.com/hshxhpv) would 
 The SPARQL editor of WikiData also has ability to visualize data as timeline.
 Here I am visualizing the US presidents according to their date of birth. (try [here](http://tinyurl.com/zwtqv4r))
 
-![presidentDOBs.png]()
+![](presidentDOBs.png)
 
 ## Side notes
 - You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). 
