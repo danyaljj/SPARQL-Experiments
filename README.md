@@ -192,6 +192,22 @@ WHERE {
   	?person wdt:P108 wd:Q457281
 }
 ```
+Now lets you want to get the labels for each of the triples: 
+
+```sparql 
+SELECT ?person  ?personLabel
+
+WHERE { 
+	?person wdt:P69 wd:Q13371. 
+    ?person wdt:P108 wd:Q457281  
+    SERVICE wikibase:label {
+		bd:serviceParam wikibase:language "en" .
+	}
+}
+```
+(try [here](http://tinyurl.com/jmwseyj))
+
+
 
 ## Side notes
 - You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). 
