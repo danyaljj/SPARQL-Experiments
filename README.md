@@ -396,3 +396,6 @@ But my preferred way of using the result is using the POST/GET apis provided by 
  - A comprehensive [cheatsheet](http://www.iro.umontreal.ca/~lapalme/ift6281/sparql-1_1-cheat-sheet.pdf). 
  - General [syntax guidelines](https://wiki.base22.com/display/btg/SPARQL+Query+Examples#SPARQLQueryExamples-Findallclasseswithagivenprefix). 
  - A list of [WikiData exmaples](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/queries/examples). 
+
+## Typos, Comments, Suggestions? 
+Send a Pull-Request, or report in the issues! :) 
