@@ -118,6 +118,19 @@ limit 100
 ```
 (try [here](http://tinyurl.com/hzkj5ny))
 
+You may wonder how to combine these results into one single call, i.e. call both DBPedia and WikiData at the same time. This is often referrd to "federated querying". In order to do so, we have to use the `SERVICE` keyword to define two end-points: 
+
+```sparql 
+PREFIX wd: <http://www.wikidata.org/entity/> 
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX dbo: <http://dbpedia.org/ontology/> 
+
+SELECT ?person WHERE { 
+  SERVICE <http://dbpedia.org/sparql> {?person a dbo:Person }
+  SERVICE <https://query.wikidata.org/sparql> { ?person wdt:P31 wd:Q5 }
+} LIMIT 100 
+```
+(try [here](http://yasgui.org/#query=PREFIX+wd%3A+%3Chttp%3A%2F%2Fwww.wikidata.org%2Fentity%2F%3E+%0APREFIX+wdt%3A+%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2Fdirect%2F%3E%0APREFIX+dbo%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E+%0A%0ASELECT+%3Fperson+WHERE+%7B+%0A++SERVICE+%3Chttps%3A%2F%2Fquery.wikidata.org%2Fsparql%3E+%7B+%3Fperson+wdt%3AP31+wd%3AQ5+%7D%0A++SERVICE+%3Chttp%3A%2F%2Fdbpedia.org%2Fsparql%3E+%7B%3Fperson+a+dbo%3APerson+%7D%0A%7D+LIMIT+100+%0A%0A&contentTypeConstruct=text%2Fturtle&contentTypeSelect=application%2Fsparql-results%2Bjson&endpoint=http%3A%2F%2Fabs.270a.info%2Fsparql&requestMethod=GET&tabTitle=Query&headers=%7B%7D&outputFormat=table))
 
 ### Getting all the Named-Entities that are "cats" 
 
