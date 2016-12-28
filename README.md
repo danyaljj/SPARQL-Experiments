@@ -365,6 +365,16 @@ LIMIT 1
 ```
 (try [here](http://tinyurl.com/gnq8ts5))
 
+## How to use the results in your code? 
+There a bunch of libraries that are intended for this; for example: 
+ - [`SPARQLConnection` of RDF4J](http://docs.rdf4j.org/javadoc/1.0/index.html?org/eclipse/rdf4j/repository/sparql/SPARQLConnection.html)
+ - [Jena Query Builder](https://jena.apache.org/documentation/extras/querybuilder/)
+ 
+But my preferred way of using the result is using the POST/GET apis provided by many endpoints. For example, here is a GET api for Wikidata which provides json results: 
+
+ - WikiData: `https://query.wikidata.org/sparql?format=json&query=PUT-YOUR-QUERY-HERE` for example [this](https://query.wikidata.org/sparql?format=json&query=ASK%20{%20wd:Q734774%20wdt:P31*%20wd:Q3918%20}). 
+ - DBPedia: `https://dbpedia.org/sparql?format=json&default-graph-uri=PUT-YOUR-QUERY-HERE` for example [this](https://dbpedia.org/sparql?format=json&default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+distinct+%3FConcept+where+%7B%5B%5D+a+%3FConcept%7D+LIMIT+100).
+
 ## Side notes
 - You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). 
 
