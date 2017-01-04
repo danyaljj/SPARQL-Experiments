@@ -394,7 +394,7 @@ But my preferred way of using the result is using the POST/GET apis provided by 
 ## Side notes
 - You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). Note that given a sentence/paragraph, the right way to map the constituents to their WikiData ids is first [disambiguating their Wiki pages](https://cogcomp.cs.illinois.edu/page/demo_view/Wikifier) and using the mapping through their Wikipedia page ids. For example consider this sentence: 
 
- "The university president, John Jenkins, described his hope that Notre Dame would become "one of the pre–eminent research institutions in the world" in his inaugural address."
+ ```The university president, John Jenkins, described his hope that Notre Dame would become "one of the pre–eminent research institutions in the world" in his inaugural address.```
 
  If I use only "Notre Dame" it would give me [the id to the disambiguation page](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=Notre%20Dame), while using the right Wikipedia page "University_of_Notre_Dame" gives me [the correct id](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University_of_Notre_Dame). 
 
