@@ -321,8 +321,9 @@ WHERE {
 which would result in 10806 representatives without ethnicity label. 
 
 
-### Finding distance between two nodes 
+### SPARQL query as similarity/entailment measure 
 
+#### Finding distance between two nodes  
 Essentially finding the shortest common ancestor of A and B (idea from [here](http://stackoverflow.com/questions/19680440/finding-common-superclass-and-length-of-path-in-class-hierarchies/19681697#19681697))
 
 DBPedia
@@ -379,7 +380,9 @@ SELECT ?super (?aLength + ?bLength as ?length) WHERE {
 } ORDER BY ?length
 LIMIT 1
 ```
-(try [here](http://tinyurl.com/gnq8ts5))
+(try [here](http://tinyurl.com/h6b67ow))
+
+(More on this later . . .)
 
 ## How to use the results in your code? 
 There a bunch of libraries that are intended for this; for example: 
