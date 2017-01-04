@@ -352,28 +352,31 @@ LIMIT 1
 (try [here](http://yasgui.org/short/HJWAUDgBl))
 
 
-WikiData 
+For WikiData, one can try [RDF GAS API by blazegraph](https://wiki.blazegraph.com/wiki/index.php/RDF_GAS_API):
 
 ```sparql
-SELECT ?a ?b ?super (?aLength + ?bLength as ?length)
-{
-  values (?a ?b) { (wd:Q5 wd:Q349) }
-  { 
-    SELECT ?a ?super (COUNT(?mid) as ?aLength) { 
-      ?a wdt:P279* ?mid .
-      ?mid wdt:P279+ ?super .
-    }
-    GROUP BY ?a ?super
+PREFIX gas: <http://www.bigdata.com/rdf/gas#>
+
+SELECT ?super (?aLength + ?bLength as ?length) WHERE {
+  SERVICE gas:service {
+    gas:program gas:gasClass "com.bigdata.rdf.graph.analytics.SSSP" ;
+                gas:in wd:Q5 ;
+                gas:traversalDirection "Forward" ;
+                gas:out ?super ;
+                gas:out1 ?aLength ;
+                gas:maxIterations 10 ;
+                gas:linkType wdt:P279 .
   }
-  { 
-    SELECT ?b ?super (COUNT(?mid) as ?bLength) { 
-      ?b wdt:P279* ?mid .
-      ?mid wdt:P279+ ?super .
-    }
-    GROUP BY ?b ?super
-  }
-}
-ORDER BY ?length
+  SERVICE gas:service {
+    gas:program gas:gasClass "com.bigdata.rdf.graph.analytics.SSSP" ;
+                gas:in wd:Q349 ;
+                gas:traversalDirection "Forward" ;
+                gas:out ?super ;
+                gas:out1 ?bLength ;
+                gas:maxIterations 10 ;
+                gas:linkType wdt:P279 .
+  }  
+} ORDER BY ?length
 LIMIT 1
 ```
 (try [here](http://tinyurl.com/gnq8ts5))
@@ -389,7 +392,12 @@ But my preferred way of using the result is using the POST/GET apis provided by 
  - DBPedia: `https://dbpedia.org/sparql?format=json&default-graph-uri=PUT-YOUR-QUERY-HERE` for example [this](https://dbpedia.org/sparql?format=json&default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+distinct+%3FConcept+where+%7B%5B%5D+a+%3FConcept%7D+LIMIT+100).
 
 ## Side notes
-- You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). 
+- You can use Wikipedia API to map Wiki page titles to WikiData ids. For example [here is the mapping for "Universityr", returned as JSON](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University). Note that given a sentence/paragraph, the right way to map the constituents to their WikiData ids is first [disambiguating their Wiki pages](https://cogcomp.cs.illinois.edu/page/demo_view/Wikifier) and using the mapping through their Wikipedia page ids. For example consider this sentence: 
+
+ "The university president, John Jenkins, described his hope that Notre Dame would become "one of the pre–eminent research institutions in the world" in his inaugural address."
+
+ If I use only "Notre Dame" it would give me [the id to the disambiguation page](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=Notre%20Dame), while using the right Wikipedia page "University_of_Notre_Dame" gives me [the correct id](https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&titles=University_of_Notre_Dame). 
+
 
 
 ## Further reading
