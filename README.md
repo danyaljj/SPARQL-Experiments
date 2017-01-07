@@ -382,7 +382,8 @@ LIMIT 1
 ```
 (try [here](http://tinyurl.com/h6b67ow))
 
-(More on this later . . .)
+(note: you can query this via [json](https://query.wikidata.org/sparql?format=json&query=PREFIX%20gas%3A%20%3Chttp%3A%2F%2Fwww.bigdata.com%2Frdf%2Fgas%23%3E%0A%0ASELECT%20%3Fsuper%20(%3FaLength%20%2B%20%3FbLength%20as%20%3Flength)%20WHERE%20%7B%0A%20%20SERVICE%20gas%3Aservice%20%7B%0A%20%20%20%20gas%3Aprogram%20gas%3AgasClass%20%22com.bigdata.rdf.graph.analytics.SSSP%22%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20gas%3Ain%20wd%3AQ5%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20gas%3AtraversalDirection%20%22Forward%22%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20gas%3Aout%20%3Fsuper%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20gas%3Aout1%20%3FaLength%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20gas%3AmaxIterations%2010%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20gas%3AlinkType%20wdt%3AP279%20.%0A%20%20%7D%0A%20%20SERVICE%20gas%3Aservice%20%7B%0A%20%20%20%20gas%3Aprogram%20gas%3AgasClass%20%22com.bigdata.rdf.graph.analytics.SSSP%22%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20gas%3Ain%20wd%3AQ349%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20gas%3AtraversalDirection%20%22Forward%22%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20gas%3Aout%20%3Fsuper%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20gas%3Aout1%20%3FbLength%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20gas%3AmaxIterations%2010%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20gas%3AlinkType%20wdt%3AP279%20.%0A%20%20%7D%20%20%0A%7D%20ORDER%20BY%20%3Flength%0ALIMIT%201))
+
 
 ## How to use the results in your code? 
 There a bunch of libraries that are intended for this; for example: 
